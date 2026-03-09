@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arbab — PCB Designer & Embedded Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #07090d;
+      --bg2:        #0c1018;
+      --card:       #0f1620;
+      --border:     #1a2535;
+      --border2:    #253045;
+      --text:       #dde6f0;
+      --muted:      #5e7490;
+      --copper:     #e8953a;
+      --copper-dim: #9a6225;
+      --blue:       #4d9de0;
+      --green:      #3dba84;
+      --font-head:  'Barlow Condensed', sans-serif;
+      --font-body:  'IBM Plex Sans', sans-serif;
+      --font-mono:  'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── PCB grid background ── */
+    .pcb-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(78,157,224,0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(78,157,224,0.028) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .pcb-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 50% at 50% -5%, rgba(232,149,58,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(77,157,224,0.04) 0%, transparent 60%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(7,9,13,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--copper);
+      letter-spacing: 0.12em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── SHARED SECTION ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--copper);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 64px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 160px;
+      padding-bottom: 80px;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--copper);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.15s;
+    }
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(72px, 11vw, 128px);
+      font-weight: 800;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+    .hero-name span { color: var(--copper); }
+
+    .hero-tagline {
+      font-size: clamp(17px, 2.2vw, 21px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.55;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+    .hero-tagline strong { color: var(--text); font-weight: 500; }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.7s;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 56px;
+      margin-top: 88px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.9s;
+      flex-wrap: wrap;
+    }
+    .stat-value {
+      font-family: var(--font-head);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--copper);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--copper);
+      color: #07090d;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #f0a84e; transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 14px 28px;
+      text-decoration: none;
+      border: 1px solid var(--border2);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--copper); color: var(--copper); transform: translateY(-2px); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #8daac0;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .skill-group { margin-bottom: 28px; }
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 5px 11px;
+      letter-spacing: 0.03em;
+    }
+    .skill-tag.copper {
+      color: var(--copper);
+      border: 1px solid rgba(232,149,58,0.28);
+      background: rgba(232,149,58,0.05);
+    }
+    .skill-tag.blue {
+      color: var(--blue);
+      border: 1px solid rgba(77,157,224,0.25);
+      background: rgba(77,157,224,0.05);
+    }
+    .skill-tag.green {
+      color: var(--green);
+      border: 1px solid rgba(61,186,132,0.25);
+      background: rgba(61,186,132,0.05);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--border);
+      transition: background 0.25s;
+    }
+    .project-card:hover { border-color: rgba(232,149,58,0.5); transform: translateY(-3px); }
+    .project-card:hover::before { background: var(--copper); }
+
+    /* Featured spans full width */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: center;
+      background: linear-gradient(130deg, #0e1c2e 0%, #0c1018 60%);
+      border-color: var(--border2);
+    }
+    .project-card.featured::before { background: var(--copper); }
+
+    .project-index {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--copper-dim);
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+    }
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .project-card.featured .project-title { font-size: 34px; }
+
+    .project-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: #6a8ca4;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-image-placeholder {
+      background: rgba(12,16,24,0.7);
+      border: 1px solid var(--border);
+      aspect-ratio: 16 / 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .placeholder-icon { opacity: 0.18; }
+    .placeholder-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      opacity: 0.45;
+      text-transform: uppercase;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 48px;
+      padding: 44px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:first-child { border-top: 1px solid var(--border); }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .timeline-company {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--copper);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .timeline-role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+    .timeline-bullets li {
+      font-size: 15px;
+      font-weight: 300;
+      color: #7a96b0;
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.65;
+    }
+    .timeline-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      font-size: 12px;
+      top: 2px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact .section-title { margin-bottom: 20px; }
+    .contact-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+    .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 44px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 10px; }
+      .hero-stats { gap: 36px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pcb-bg"></div>
+
+  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-logo">ARBAB.[LASTNAME]</div>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-label">// PCB Designer & Embedded Systems Engineer</div>
+    <h1 class="hero-name">ARBAB<br><span>[LASTNAME]</span></h1>
+    <p class="hero-tagline">
+      I design <strong>hardware systems that survive contact with reality</strong> —
+      from PCB schematic and layout to firmware and full product architecture.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-value">3+</div>
+        <div class="stat-label">Production PCBs Designed</div>
+      </div>
+      <div>
+        <div class="stat-value">HW→FW</div>
+        <div class="stat-label">Full Stack Coverage</div>
+      </div>
+      <div>
+        <div class="stat-value">USV</div>
+        <div class="stat-label">Autonomous Vehicle Systems</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────── -->
+  <section id="about">
+    <div class="section-label">// 01 — About</div>
+    <h2 class="section-title fade-in">Systems Thinker.<br>Hardware Builder.</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>
+          I'm a PCB design and embedded systems engineer who thinks in <strong>full systems</strong>,
+          not isolated components. When evaluating a design, I'm already asking about failure modes,
+          the upgrade path, and what breaks when requirements shift.
+        </p>
+        <p>
+          That instinct runs consistently — from laying out a PCB, to planning network
+          infrastructure, to designing firmware architecture. Same thinking at every scale.
+        </p>
+        <p>
+          My strongest territory is the <strong>hardware/software seam</strong>: where silicon
+          constraints, peripheral behavior, power budgets, and software architecture all have
+          to cohere at once.
+        </p>
+      </div>
+      <div class="fade-in">
+        <div class="skill-group">
+          <div class="skill-group-label">Hardware & PCB</div>
+          <div class="skill-tags">
+            <span class="skill-tag copper">PCB Design</span>
+            <span class="skill-tag copper">Schematic Capture</span>
+            <span class="skill-tag copper">Altium Designer</span>
+            <span class="skill-tag copper">Power Electronics</span>
+            <span class="skill-tag copper">BMS Design</span>
+            <span class="skill-tag copper">3D CAD / Enclosures</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Firmware & Embedded</div>
+          <div class="skill-tags">
+            <span class="skill-tag blue">ARM MCUs</span>
+            <span class="skill-tag blue">NXP S32</span>
+            <span class="skill-tag blue">Embedded C</span>
+            <span class="skill-tag blue">Peripheral Config</span>
+            <span class="skill-tag blue">CAN / UART / SPI / I2C</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Infrastructure</div>
+          <div class="skill-tags">
+            <span class="skill-tag green">Proxmox</span>
+            <span class="skill-tag green">Network Design</span>
+            <span class="skill-tag green">PoE Systems</span>
+            <span class="skill-tag green">Self-Hosted Services</span>
+            <span class="skill-tag green">Home Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJECTS ─────────────────────────────────────── -->
+  <section id="projects">
+    <div class="section-label">// 02 — Projects</div>
+    <h2 class="section-title fade-in">Selected Work</h2>
+    <div class="projects-grid">
+
+      <!-- FEATURED: USV -->
+      <div class="project-card featured fade-in">
+        <div>
+          <div class="project-index">// FEATURED — PROFESSIONAL</div>
+          <div class="project-title">Unmanned Surface Vehicle —<br>Next-Gen Prototype PCB</div>
+          <div class="project-desc">
+            Sole designer of the next-generation prototype PCB for an autonomous unmanned
+            surface vehicle. Full schematic capture and PCB layout ownership from concept
+            through production handoff. System architecture co-developed with senior engineer.
+            Board integrates navigation, communication, and power management into a single
+            deployable platform.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Altium Designer</span>
+            <span class="project-tag">Schematic</span>
+            <span class="project-tag">PCB Layout</span>
+            <span class="project-tag">Systems Architecture</span>
+            <span class="project-tag">Prototype → Production</span>
+          </div>
+        </div>
+        <div class="project-image-placeholder">
+          <svg class="placeholder-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4d9de0" stroke-width="1">
+            <rect x="2" y="2" width="20" height="20" rx="2"/>
+            <circle cx="7" cy="7" r="1.2" fill="#4d9de0"/>
+            <circle cx="17" cy="7" r="1.2" fill="#4d9de0"/>
+            <circle cx="7" cy="17" r="1.2" fill="#4d9de0"/>
+            <circle cx="17" cy="17" r="1.2" fill="#4d9de0"/>
+            <circle cx="12" cy="12" r="1.2" fill="#e8953a"/>
+            <line x1="7" y1="7" x2="12" y2="7"/>
+            <line x1="12" y1="7" x2="17" y2="7"/>
+            <line x1="7" y1="17" x2="12" y2="17"/>
+            <line x1="12" y1="17" x2="17" y2="17"/>
+            <line x1="7" y1="7" x2="7" y2="17"/>
+            <line x1="17" y1="7" x2="17" y2="17"/>
+            <line x1="12" y1="7" x2="12" y2="12"/>
+            <line x1="7" y1="12" x2="12" y2="12"/>
+          </svg>
+          <span class="placeholder-label">PCB Render — Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- BMS -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 01 — PROFESSIONAL</div>
+        <div class="project-title">Battery Management System PCB Redesign</div>
+        <div class="project-desc">
+          Full redesign of the battery management PCB for the USV platform.
+          Sole owner of schematic and layout. Responsible for validation and
+          integration with the broader power architecture.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">BMS</span>
+          <span class="project-tag">Power Electronics</span>
+          <span class="project-tag">PCB Redesign</span>
+          <span class="project-tag">Altium</span>
+        </div>
+      </div>
+
+      <!-- COMMS -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 02 — PROFESSIONAL</div>
+        <div class="project-title">Communications Management PCB Redesign</div>
+        <div class="project-desc">
+          Redesigned communications management board for the same vehicle platform.
+          Full schematic and layout ownership. Integrated within the broader
+          multi-board system architecture.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">RF / Comms</span>
+          <span class="project-tag">PCB Layout</span>
+          <span class="project-tag">Altium</span>
+          <span class="project-tag">Systems Integration</span>
+        </div>
+      </div>
+
+      <!-- CAPSTONE -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 03 — ACADEMIC</div>
+        <div class="project-title">PC Power Supply Unit — Capstone Project</div>
+        <div class="project-desc">
+          Designed and built a PC power supply from scratch as an engineering
+          capstone. Full power electronics design from schematic through physical
+          build and verification.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Power Electronics</span>
+          <span class="project-tag">Schematic Design</span>
+          <span class="project-tag">PCB Layout</span>
+          <span class="project-tag">Build & Test</span>
+        </div>
+      </div>
+
+      <!-- TV MOUNT -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 04 — PERSONAL</div>
+        <div class="project-title">Motorized TV Mounting System</div>
+        <div class="project-desc">
+          Automated TV mount that moves the display into viewing position on demand.
+          Custom mechanical components designed and 3D-printed in-house.
+          Motion system complete; smart home integration ongoing.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">3D Printing</span>
+          <span class="project-tag">CAD</span>
+          <span class="project-tag">Embedded</span>
+          <span class="project-tag">Home Automation</span>
+        </div>
+      </div>
+
+      <!-- HOMELAB -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 05 — PERSONAL</div>
+        <div class="project-title">Homelab Infrastructure</div>
+        <div class="project-desc">
+          Self-built server and network rack running Proxmox virtualization,
+          reverse proxies, NAS storage, and PoE camera infrastructure.
+          Designed for reliability, future expansion, and local-first control.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Proxmox</span>
+          <span class="project-tag">Network Design</span>
+          <span class="project-tag">NAS</span>
+          <span class="project-tag">PoE</span>
+          <span class="project-tag">Self-Hosted</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE ───────────────────────────────────── -->
+  <section id="experience">
+    <div class="section-label">// 03 — Experience</div>
+    <h2 class="section-title fade-in">Where I've Worked</h2>
+    <div class="timeline">
+
+      <div class="timeline-item fade-in">
+        <div>
+          <div class="timeline-date">[YEAR] — [YEAR]</div>
+          <div class="timeline-company">[Company 1]</div>
+          <div class="timeline-role">PCB / Embedded Engineer</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Designed next-generation prototype PCB for an unmanned surface vehicle — sole owner of schematic and layout from concept through handoff</li>
+          <li>Co-architected system-level board design with senior engineer, spanning power, comms, and navigation subsystems</li>
+          <li>Redesigned battery management PCB — full schematic, layout, and validation</li>
+          <li>Redesigned communications management PCB — full schematic, layout, and integration</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div>
+          <div class="timeline-date">[YEAR] — [YEAR]</div>
+          <div class="timeline-company">[Company 2]</div>
+          <div class="timeline-role">Hardware Engineer</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Conducted in-depth schematic and PCB design reviews for client hardware products</li>
+          <li>Identified design issues and provided technical recommendations; clients implemented changes per findings</li>
+          <li>Applied cross-domain systems thinking to surface problems before fabrication — reducing costly re-spins</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ──────────────────────────────────────── -->
+  <section id="contact">
+    <div class="section-label">// 04 — Contact</div>
+    <h2 class="section-title fade-in">Let's Build<br>Something.</h2>
+    <p class="contact-sub fade-in">
+      Open to roles in PCB design, embedded systems, and hardware/firmware engineering.
+      I'm looking for teams where technical rigor actually matters.
+    </p>
+    <div class="contact-links fade-in">
+      <a href="mailto:your@email.com" class="btn-primary">Email Me →</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer>
+    <p>© 2025 Arbab [Lastname]</p>
+    <p>PCB Designer & Embedded Systems Engineer</p>
+  </footer>
+
+  <script>
+    // Staggered scroll-triggered fade-ins
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${i * 0.07}s`;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Subtle nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
