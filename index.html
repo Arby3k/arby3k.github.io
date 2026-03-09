@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arbab — PCB Designer & Embedded Engineer</title>
+  <title>Arbab Ahmed, EIT — PCB Designer & Embedded Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -459,9 +459,13 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.hidden {
       opacity: 0;
       transform: translateY(26px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -490,7 +494,7 @@
 
   <!-- ─── NAV ─────────────────────────────────────────── -->
   <nav>
-    <div class="nav-logo">ARBAB.[LASTNAME]</div>
+    <div class="nav-logo">ARBAB.AHMED — EIT</div>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
       <li><a href="#projects">projects</a></li>
@@ -501,8 +505,8 @@
 
   <!-- ─── HERO ─────────────────────────────────────────── -->
   <section id="hero">
-    <div class="hero-label">// PCB Designer & Embedded Systems Engineer</div>
-    <h1 class="hero-name">ARBAB<br><span>[LASTNAME]</span></h1>
+    <div class="hero-label">// Electronics Engineer in Training — Langley, BC</div>
+    <h1 class="hero-name">ARBAB<br><span>AHMED</span></h1>
     <p class="hero-tagline">
       I design <strong>hardware systems that survive contact with reality</strong> —
       from PCB schematic and layout to firmware and full product architecture.
@@ -513,16 +517,20 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-value">3+</div>
-        <div class="stat-label">Production PCBs Designed</div>
+        <div class="stat-value">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">PCBs Designed — Full Ownership</div>
+      </div>
+      <div>
+        <div class="stat-value">4–8L</div>
+        <div class="stat-label">Layer Stack-Up Ownership</div>
       </div>
       <div>
         <div class="stat-value">HW→FW</div>
         <div class="stat-label">Full Stack Coverage</div>
-      </div>
-      <div>
-        <div class="stat-value">USV</div>
-        <div class="stat-label">Autonomous Vehicle Systems</div>
       </div>
     </div>
   </section>
@@ -728,67 +736,111 @@
 
       <div class="timeline-item fade-in">
         <div>
-          <div class="timeline-date">[YEAR] — [YEAR]</div>
-          <div class="timeline-company">[Company 1]</div>
-          <div class="timeline-role">PCB / Embedded Engineer</div>
+          <div class="timeline-date">Jan 2024 — Sep 2025</div>
+          <div class="timeline-company">Hedgehog Technologies</div>
+          <div class="timeline-role">Electronics Engineer · Burnaby, BC</div>
         </div>
         <ul class="timeline-bullets">
-          <li>Designed next-generation prototype PCB for an unmanned surface vehicle — sole owner of schematic and layout from concept through handoff</li>
-          <li>Co-architected system-level board design with senior engineer, spanning power, comms, and navigation subsystems</li>
-          <li>Redesigned battery management PCB — full schematic, layout, and validation</li>
-          <li>Redesigned communications management PCB — full schematic, layout, and integration</li>
+          <li>Reviewed schematics and PCB layouts for high-voltage BLDC motor controller PCBAs — provided recommendations on manufacturability, reliability, and testability</li>
+          <li>Supported extensive hardware bring-up and validation; identified layout- and system-level issues during physical testing</li>
+          <li>Provided routing and layout guidance on high-current paths, power/ground strategies, and gate-driver switching behaviour</li>
+          <li>Redlined schematics, layouts, and BOMs to address component shortages; created ECOs and test reports to document all design changes</li>
         </ul>
       </div>
 
       <div class="timeline-item fade-in">
         <div>
-          <div class="timeline-date">[YEAR] — [YEAR]</div>
-          <div class="timeline-company">[Company 2]</div>
-          <div class="timeline-role">Hardware Engineer</div>
+          <div class="timeline-date">Feb 2022 — Sep 2023</div>
+          <div class="timeline-company">Open Ocean Robotics</div>
+          <div class="timeline-role">Electronics Engineer · Victoria, BC</div>
         </div>
         <ul class="timeline-bullets">
-          <li>Conducted in-depth schematic and PCB design reviews for client hardware products</li>
-          <li>Identified design issues and provided technical recommendations; clients implemented changes per findings</li>
-          <li>Applied cross-domain systems thinking to surface problems before fabrication — reducing costly re-spins</li>
+          <li>Sole designer of the next-generation prototype PCB for an autonomous unmanned surface vehicle — full schematic capture and layout ownership from concept through production handoff</li>
+          <li>Owned PCB layout and layer stack-up definition (4–8 layers) in Altium Designer for mixed-signal PCBAs supporting embedded and communication-heavy systems</li>
+          <li>Redesigned battery management and communications management PCBs — full schematic, layout, validation, and integration</li>
+          <li>Established and maintained the Altium ECAD component library, improving layout consistency and reducing rework during production handoff</li>
+          <li>Interfaced directly with contract manufacturers to review layouts, address DFM feedback, and resolve assembly issues during prototyping and early production</li>
+          <li>Designed mixed-signal PCBAs incorporating UART, I²C, SPI, RS-232/485, USB, PCIe, and CAN interfaces</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div>
+          <div class="timeline-date">May 2019 — Aug 2019</div>
+          <div class="timeline-company">BCIT — SMART Microgrid</div>
+          <div class="timeline-role">Research Assistant · Burnaby, BC</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Built and validated test fixtures and wiring harnesses for AC grid-tied power electronics systems</li>
+          <li>Defined and executed hardware test procedures; authored formal test reports to support verification and system validation</li>
+          <li>Designed and proposed a microgrid UI/UX upgrade mimicking OEM HMI to reduce costs and deployment time</li>
         </ul>
       </div>
 
     </div>
   </section>
 
+  <!-- ─── EDUCATION ─────────────────────────────────────── -->
+  <section id="education" style="padding-top: 0;">
+    <div class="section-label">// 04 — Education</div>
+    <h2 class="section-title fade-in">Academic Background</h2>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div>
+          <div class="timeline-date">Sep 2017 — May 2021</div>
+          <div class="timeline-company">BCIT</div>
+          <div class="timeline-role">B.Eng. Electrical Engineering · Burnaby, BC</div>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Capstone: Designed and built a PC power supply from scratch — full power electronics design from schematic through physical build and verification</li>
+          <li>Graduated as Engineer in Training (EIT)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── CONTACT ──────────────────────────────────────── -->
   <section id="contact">
-    <div class="section-label">// 04 — Contact</div>
+    <div class="section-label">// 05 — Contact</div>
     <h2 class="section-title fade-in">Let's Build<br>Something.</h2>
     <p class="contact-sub fade-in">
       Open to roles in PCB design, embedded systems, and hardware/firmware engineering.
       I'm looking for teams where technical rigor actually matters.
     </p>
     <div class="contact-links fade-in">
-      <a href="mailto:your@email.com" class="btn-primary">Email Me →</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      <a href="mailto:Arbab@Ahmed.ee" class="btn-primary">Email Me →</a>
+      <a href="https://linkedin.com/in/arbab-ahmed" target="_blank" class="btn-secondary">LinkedIn ↗</a>
     </div>
   </section>
 
   <!-- ─── FOOTER ────────────────────────────────────────── -->
   <footer>
-    <p>© 2025 Arbab [Lastname]</p>
-    <p>PCB Designer & Embedded Systems Engineer</p>
+    <p>© 2025 Arbab Ahmed, EIT</p>
+    <p>PCB Designer & Embedded Systems Engineer · Langley, BC</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Staggered scroll-triggered fade-ins
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = `${i * 0.07}s`;
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    const fadeEls = document.querySelectorAll('.fade-in');
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Only animate if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+      fadeEls.forEach(el => el.classList.add('hidden'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.remove('hidden');
+              entry.target.classList.add('visible');
+            }, i * 70);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      fadeEls.forEach(el => observer.observe(el));
+    }
 
     // Subtle nav highlight on scroll
     const sections = document.querySelectorAll('section[id]');
@@ -799,10 +851,4 @@
         if (window.scrollY >= s.offsetTop - 120) current = s.id;
       });
       navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
-      });
-    }, { passive: true });
-  </script>
-
-</body>
-</html>
+        
