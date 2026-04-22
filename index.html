@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arbab Ahmed, EIT / PCB Designer & Embedded Engineer</title>
+<title>Arbab Ahmed, EIT / PCB Designer & Embedded Systems Engineer</title>
+  <meta name="description" content="Arbab Ahmed is an electronics engineer (EIT) in Langley, BC, specializing in PCB design, hardware validation, and prototype-to-production development. 4+ years of experience with Altium Designer, mixed-signal layout, and high-voltage motor controller hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -28,6 +29,13 @@
     }
 
     html { scroll-behavior: smooth; }
+    
+    section[id] { scroll-margin-top: 110px; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
 
     body {
       background: var(--bg);
@@ -354,24 +362,45 @@
       letter-spacing: 0.04em;
     }
 
-    .project-image-placeholder {
-      background: rgba(12,16,24,0.7);
-      border: 1px solid var(--border);
-      aspect-ratio: 16 / 11;
+    .spec-panel {
+      background: rgba(7,9,13,0.8);
+      border: 1px solid var(--border2);
+      padding: 28px 32px;
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-      gap: 14px;
+      gap: 0;
     }
-    .placeholder-icon { opacity: 0.18; }
-    .placeholder-label {
+    .spec-panel-header {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.14em;
-      opacity: 0.45;
+      color: var(--copper);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(26,37,53,0.5);
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .spec-val {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-align: right;
     }
 
     /* ── EXPERIENCE ── */
@@ -509,7 +538,7 @@
     <h1 class="hero-name">ARBAB<br><span>AHMED</span></h1>
     <p class="hero-tagline">
       I design <strong>hardware that works in the real world</strong>,
-      from PCB schematic and layout through to firmware and product architecture.
+      from schematic capture and PCB layout through prototype bring-up and production handoff.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
@@ -521,16 +550,16 @@
         <div class="stat-label">Years Experience</div>
       </div>
       <div>
-        <div class="stat-value">3</div>
-        <div class="stat-label">PCBs Designed — Full Ownership</div>
+        <div class="stat-value">10</div>
+        <div class="stat-label">10-PCBA USV Platform</div>
       </div>
       <div>
-        <div class="stat-value">4–8L</div>
+        <div class="stat-value">800V</div>
+        <div class="stat-label">Motor Controller Hardware</div>
+      </div>
+      <div>
+        <div class="stat-value">4-8L</div>
         <div class="stat-label">Layer Stack-Up Ownership</div>
-      </div>
-      <div>
-        <div class="stat-value">HW→FW</div>
-        <div class="stat-label">Full Stack Coverage</div>
       </div>
     </div>
   </section>
@@ -542,18 +571,19 @@
     <div class="about-grid">
       <div class="about-text fade-in">
         <p>
-          I'm a PCB design and embedded systems engineer. When I look at a design,
+          I'm an electronics engineer focused on PCB design, hardware validation,
+          and getting products from prototype to production. When I look at a design,
           I'm thinking about the whole picture: where it might fail, how it gets built,
           and what happens when the requirements shift.
         </p>
         <p>
           That kind of thinking shows up the same way whether I'm laying out a board,
-          writing firmware, or planning system architecture.
+          debugging a prototype on the bench, or working through DFM feedback with a CM.
         </p>
         <p>
-          My strongest work is at the <strong>hardware/software boundary</strong>: where
-          silicon constraints, peripheral behaviour, power budgets, and software
-          all have to work together.
+          My strongest work is at the <strong>integration boundary</strong>: where
+          layout decisions, component selection, power budgets, and real-world
+          operating conditions all have to line up before anything ships.
         </p>
       </div>
       <div class="fade-in">
@@ -571,10 +601,10 @@
         <div class="skill-group">
           <div class="skill-group-label">Firmware & Embedded</div>
           <div class="skill-tags">
-            <span class="skill-tag blue">ARM MCUs</span>
             <span class="skill-tag blue">NXP S32</span>
+            <span class="skill-tag blue">TI MSP430</span>
             <span class="skill-tag blue">Embedded C</span>
-            <span class="skill-tag blue">Peripheral Config</span>
+            <span class="skill-tag blue">JTAG / SWD Debug</span>
             <span class="skill-tag blue">CAN / UART / SPI / I2C</span>
           </div>
         </div>
@@ -602,12 +632,13 @@
       <div class="project-card featured fade-in">
         <div>
           <div class="project-index">// FEATURED · PROFESSIONAL</div>
-          <div class="project-title">Unmanned Surface Vehicle:<br>Next-Gen Prototype PCB</div>
+          <div class="project-title">Unmanned Surface Vehicle:<br>10-PCBA Electronics Platform</div>
           <div class="project-desc">
-            I was the sole PCB designer on the next-generation prototype for an autonomous
-            unmanned surface vehicle. Full schematic and layout from scratch, with system
-            architecture worked out alongside the senior engineer. The board brought navigation,
-            communications, and power management together on a single platform built for field deployment.
+            Sole PCB designer on the electronics package for an autonomous unmanned surface
+            vehicle with 10 PCBAs. Full schematic and layout ownership on three boards
+            (next-gen prototype, BMS, and comms management), with system architecture
+            defined alongside a senior engineer. The platform brought navigation,
+            communications, and power management together for field-deployed marine vessels.
           </div>
           <div class="project-tags">
             <span class="project-tag">Altium Designer</span>
@@ -617,24 +648,14 @@
             <span class="project-tag">Prototype → Production</span>
           </div>
         </div>
-        <div class="project-image-placeholder">
-          <svg class="placeholder-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4d9de0" stroke-width="1">
-            <rect x="2" y="2" width="20" height="20" rx="2"/>
-            <circle cx="7" cy="7" r="1.2" fill="#4d9de0"/>
-            <circle cx="17" cy="7" r="1.2" fill="#4d9de0"/>
-            <circle cx="7" cy="17" r="1.2" fill="#4d9de0"/>
-            <circle cx="17" cy="17" r="1.2" fill="#4d9de0"/>
-            <circle cx="12" cy="12" r="1.2" fill="#e8953a"/>
-            <line x1="7" y1="7" x2="12" y2="7"/>
-            <line x1="12" y1="7" x2="17" y2="7"/>
-            <line x1="7" y1="17" x2="12" y2="17"/>
-            <line x1="12" y1="17" x2="17" y2="17"/>
-            <line x1="7" y1="7" x2="7" y2="17"/>
-            <line x1="17" y1="7" x2="17" y2="17"/>
-            <line x1="12" y1="7" x2="12" y2="12"/>
-            <line x1="7" y1="12" x2="12" y2="12"/>
-          </svg>
-          <span class="placeholder-label">PCB Render: Coming Soon</span>
+        <div class="spec-panel">
+          <div class="spec-panel-header">// PLATFORM SPECS</div>
+          <div class="spec-row"><span class="spec-key">PCBAs</span><span class="spec-val">10 assemblies</span></div>
+          <div class="spec-row"><span class="spec-key">Layers</span><span class="spec-val">4 to 8 per board</span></div>
+          <div class="spec-row"><span class="spec-key">Interfaces</span><span class="spec-val">CAN, SPI, I2C, RS-485, USB, PCIe</span></div>
+          <div class="spec-row"><span class="spec-key">Subsystems</span><span class="spec-val">Nav, Comms, Power, Telemetry</span></div>
+          <div class="spec-row"><span class="spec-key">ECAD</span><span class="spec-val">Altium Designer</span></div>
+          <div class="spec-row"><span class="spec-key">Status</span><span class="spec-val">Field-deployed</span></div>
         </div>
       </div>
 
@@ -671,13 +692,68 @@
         </div>
       </div>
 
+      <!-- JETSON CARRIER -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 03 · PROFESSIONAL</div>
+        <div class="project-title">Jetson Orin AGX Carrier Board</div>
+        <div class="project-desc">
+          Schematic capture and PCB routing on a 12-layer carrier board for the
+          Nvidia Jetson Orin AGX, incorporating PCIe Gen3 x4 and USB 3.1 Gen1 interfaces.
+          Part of the next-gen compute architecture for the USV platform.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">12-Layer PCB</span>
+          <span class="project-tag">High-Speed Interfaces</span>
+          <span class="project-tag">PCIe Gen3</span>
+          <span class="project-tag">USB 3.1</span>
+          <span class="project-tag">Altium</span>
+        </div>
+      </div>
+
+      <!-- I2C ADDRESS STRAP -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 04 · PROFESSIONAL</div>
+        <div class="project-title">I2C Address Conflict Resolution</div>
+        <div class="project-desc">
+          When the USV power distribution scaled from 16 to 32 rails, two identical boards
+          ended up on the same I2C bus with conflicting addresses. I solved it with a physical
+          rework on existing stock, a motherboard revision adding pull-up/pull-down resistors
+          to determine address by slot, and a firmware update to self-assign at boot.
+          The boards shipped and are currently in vessels at sea.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">I2C</span>
+          <span class="project-tag">Hardware Rework</span>
+          <span class="project-tag">Firmware</span>
+          <span class="project-tag">Problem Solving</span>
+        </div>
+      </div>
+
+      <!-- TEST JIG -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 05 · PROFESSIONAL</div>
+        <div class="project-title">Automated Test Jig for USV Electronics</div>
+        <div class="project-desc">
+          Designed an automated test jig with purpose-built test circuits and dummy loads
+          to validate the full USV electronics package before deployment. Incorporated
+          external sensor communication to verify system-level electrical performance
+          without needing the complete vessel.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Test Automation</span>
+          <span class="project-tag">Hardware Validation</span>
+          <span class="project-tag">Custom Test Circuits</span>
+          <span class="project-tag">Dummy Loads</span>
+        </div>
+      </div>
+
       <!-- CAPSTONE -->
       <div class="project-card fade-in">
-        <div class="project-index">// 03 · ACADEMIC</div>
+        <div class="project-index">// 06 · ACADEMIC</div>
         <div class="project-title">PC Power Supply Unit — Capstone Project</div>
         <div class="project-desc">
           Built a PC power supply from the ground up as my engineering capstone.
-          Schematic, PCB layout, physical build, and testing all done along side my team.
+          Schematic, PCB layout, physical build, and testing all done alongside my team.
         </div>
         <div class="project-tags">
           <span class="project-tag">Power Electronics</span>
@@ -689,7 +765,7 @@
 
       <!-- TV MOUNT -->
       <div class="project-card fade-in">
-        <div class="project-index">// 04 · PERSONAL</div>
+        <div class="project-index">// 07 · PERSONAL</div>
         <div class="project-title">Motorized TV Mounting System</div>
         <div class="project-desc">
           A TV mount that moves the display into position automatically.
@@ -705,7 +781,7 @@
 
       <!-- HOMELAB -->
       <div class="project-card fade-in">
-        <div class="project-index">// 05 · PERSONAL</div>
+        <div class="project-index">// 08 · PERSONAL</div>
         <div class="project-title">Homelab Infrastructure</div>
         <div class="project-desc">
           Self-built server and network rack running Proxmox virtualization,
@@ -732,15 +808,19 @@
 
       <div class="timeline-item fade-in">
         <div>
-          <div class="timeline-date">Jan 2024 — Sep 2025</div>
+          <div class="timeline-date">Feb 2024 — Sep 2025</div>
           <div class="timeline-company">Hedgehog Technologies</div>
           <div class="timeline-role">Electronics Engineer · Burnaby, BC</div>
         </div>
         <ul class="timeline-bullets">
-          <li>Reviewed schematics and PCB layouts for high-voltage BLDC motor controller boards, with a focus on manufacturability, reliability, and testability</li>
-          <li>Supported hardware bring-up and validation; flagged layout and system-level issues found during physical testing</li>
-          <li>Gave routing guidance on high-current paths, power and ground strategies, and gate-driver switching behaviour</li>
-          <li>Redlined schematics, layouts, and BOMs for component shortages; wrote ECOs and test reports to track all changes</li>
+          <li>Primary PCB reviewer for client-designed 800V BLDC motor controller assemblies, catching ground loops and misconfigured MCU pins before boards went to manufacture</li>
+          <li>Led prototype bring-up and hardware validation on high-voltage motor control PCBAs, resolving issues through board-level modifications to bring prototypes to full spec</li>
+          <li>Identified gate driver switching performance issues by calculating optimal gate resistor values and verifying on live hardware; findings adopted by the client in subsequent revisions</li>
+          <li>Debugged NXP S32M244 motor controller hardware using PEmicro Cyclone JTAG/SWD, including live breakpoint debugging and peripheral register inspection during bring-up</li>
+          <li>Developed test firmware for peripheral validation when production firmware was insufficient for specific test requirements</li>
+          <li>Designed and built an automated test jig with 4-20 mA instrumentation, DAQ integration, and dummy loads to validate motor controller hardware under realistic operating conditions</li>
+          <li>Conducted dynamometer and pump testing with CAN-to-Ethernet gateways and custom automation software, enabling unattended long-duration validation runs</li>
+          <li>Redlined schematics, layouts, and BOMs for component shortages; authored ECOs and test reports to document all design changes</li>
         </ul>
       </div>
 
@@ -748,15 +828,17 @@
         <div>
           <div class="timeline-date">Feb 2022 — Sep 2023</div>
           <div class="timeline-company">Open Ocean Robotics</div>
-          <div class="timeline-role">Electronics Engineer · Victoria, BC</div>
+          <div class="timeline-role">Jr. Electronics Engineer · Victoria, BC</div>
         </div>
         <ul class="timeline-bullets">
-          <li>Sole PCB designer on the next-generation prototype for an autonomous unmanned surface vehicle; full schematic and layout from concept through production handoff</li>
-          <li>Owned layout and stack-up definition (4 to 8 layers) in Altium for mixed-signal boards supporting embedded and comms-heavy systems</li>
-          <li>Redesigned the battery management and communications management PCBs; handled schematic, layout, validation, and integration</li>
-          <li>Built and maintained the Altium component library, which cut rework during production handoff</li>
-          <li>Worked directly with contract manufacturers to review layouts, address DFM feedback, and sort out assembly issues during prototyping</li>
-          <li>Designed mixed-signal boards with UART, I2C, SPI, RS-232/485, USB, PCIe, and CAN</li>
+          <li>Sole PCB designer on a 10-PCBA autonomous unmanned surface vessel; full schematic and layout ownership on three boards from concept through production handoff</li>
+          <li>Owned layout and stack-up definition (4 to 8 layers) in Altium for mixed-signal MCU-based boards supporting solar telemetry, navigation lighting, and bilge monitoring on deployed USVs</li>
+          <li>Proposed and designed a consolidated 8-layer validation PCBA combining a planned 3-board next-generation architecture, integrating high-current power, mixed-signal circuitry, and communication interfaces with an Nvidia Jetson SBC</li>
+          <li>Performed schematic capture and initiated PCB routing on a 12-layer Jetson Orin AGX carrier board with PCIe Gen3 x4 and USB 3.1 Gen1 interfaces</li>
+          <li>Designed automated test jig with purpose-built test circuits, dummy loads, and external sensor communication to verify system-level electrical performance of the full USV electronics package before deployment</li>
+          <li>Wrote MSP430 firmware to dynamically assign I2C addresses via hardware strap pins at boot, resolving a bus conflict when the power distribution scaled from 16 to 32 rails</li>
+          <li>Built and maintained the Altium component library and led the migration from KiCAD alongside an outside consulting engineer</li>
+          <li>Worked directly with contract manufacturers to review layouts, address DFM feedback, and resolve assembly issues during prototyping</li>
         </ul>
       </div>
 
@@ -800,22 +882,22 @@
     <div class="section-label">// 05 — Contact</div>
     <h2 class="section-title fade-in">Let's Build<br>Something.</h2>
     <p class="contact-sub fade-in">
-      Open to PCB design, embedded systems, and hardware/firmware roles.
+      Open to PCB design, hardware validation, and electrical product development roles.
       I'm looking for teams where technical rigor matters.
     </p>
     <div class="contact-links fade-in">
       <a href="mailto:Arbab@Ahmed.ee" class="btn-primary">Email Me →</a>
-      <a href="https://linkedin.com/in/arbab-ahmed" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      <a href="https://linkedin.com/in/arbab-ahmed" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn ↗</a>
     </div>
   </section>
 
   <!-- ─── FOOTER ────────────────────────────────────────── -->
   <footer>
-    <p>© 2025 Arbab Ahmed, EIT</p>
+    <p>© 2026 Arbab Ahmed, EIT</p>
     <p>PCB Designer & Embedded Systems Engineer · Langley, BC</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // Staggered scroll-triggered fade-ins
     const fadeEls = document.querySelectorAll('.fade-in');
 
