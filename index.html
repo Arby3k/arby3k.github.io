@@ -534,13 +534,13 @@
 
   <!-- ─── HERO ─────────────────────────────────────────── -->
   <section id="hero">
-    <div class="hero-label">// Electronics Engineer in Training — Langley, BC</div>
+    <div class="hero-label">// Electronics Engineer, EIT - Langley, BC</div>
     <h1 class="hero-name">ARBAB<br><span>AHMED</span></h1>
     <p class="hero-tagline">
       I design <strong>hardware that works in the real world</strong>,
       from schematic capture and PCB layout through prototype bring-up and production handoff.
     </p>
-    <div class="hero-ctas">
+    <!-- <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
       <a href="#contact" class="btn-secondary">Get in Touch</a>
     </div>
@@ -561,7 +561,7 @@
         <div class="stat-value">4-8L</div>
         <div class="stat-label">Layer Stack-Up Ownership</div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <!-- ─── ABOUT ─────────────────────────────────────────── -->
@@ -593,29 +593,30 @@
             <span class="skill-tag copper">PCB Design</span>
             <span class="skill-tag copper">Schematic Capture</span>
             <span class="skill-tag copper">Altium Designer</span>
+            <span class="skill-tag copper">Mixed-Signal Layout</span>
             <span class="skill-tag copper">Power Electronics</span>
-            <span class="skill-tag copper">BMS Design</span>
-            <span class="skill-tag copper">3D CAD / Enclosures</span>
+            <span class="skill-tag copper">DFM / CM Handoff</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-label">Firmware & Embedded</div>
+          <div class="skill-group-label">Validation & Test</div>
           <div class="skill-tags">
-            <span class="skill-tag blue">NXP S32</span>
-            <span class="skill-tag blue">TI MSP430</span>
+            <span class="skill-tag green">Prototype Bring-Up</span>
+            <span class="skill-tag green">Automated Test Jigs</span>
+            <span class="skill-tag green">DAQ & Instrumentation</span>
+            <span class="skill-tag green">Test Automation</span>
+            <span class="skill-tag green">Bench Debug</span>
+            <span class="skill-tag green">Hardware Validation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Embedded & Interfaces</div>
+          <div class="skill-tags">
             <span class="skill-tag blue">Embedded C</span>
-            <span class="skill-tag blue">JTAG / SWD Debug</span>
+            <span class="skill-tag blue">NXP S32 / MSP430</span>
+            <span class="skill-tag blue">JTAG / SWD</span>
             <span class="skill-tag blue">CAN / UART / SPI / I2C</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Infrastructure</div>
-          <div class="skill-tags">
-            <span class="skill-tag green">Proxmox</span>
-            <span class="skill-tag green">Network Design</span>
-            <span class="skill-tag green">PoE Systems</span>
-            <span class="skill-tag green">Self-Hosted Services</span>
-            <span class="skill-tag green">Home Automation</span>
+            <span class="skill-tag blue">Sensor Integration</span>
           </div>
         </div>
       </div>
@@ -635,10 +636,10 @@
           <div class="project-title">Unmanned Surface Vehicle:<br>10-PCBA Electronics Platform</div>
           <div class="project-desc">
             Sole PCB designer on the electronics package for an autonomous unmanned surface
-            vehicle with 10 PCBAs. Full schematic and layout ownership on three boards
-            (next-gen prototype, BMS, and comms management), with system architecture
-            defined alongside a senior engineer. The platform brought navigation,
-            communications, and power management together for field-deployed marine vessels.
+            vehicle with 10 PCBAs. Full schematic and layout ownership on three boards,
+            with system architecture scoped in collaboration with the lead engineer.
+            The platform integrated navigation, communications, sensor aggregation,
+            and power management for field-deployed marine vessels.
           </div>
           <div class="project-tags">
             <span class="project-tag">Altium Designer</span>
@@ -659,64 +660,13 @@
         </div>
       </div>
 
-      <!-- BMS -->
-      <div class="project-card fade-in">
-        <div class="project-index">// 01 · PROFESSIONAL</div>
-        <div class="project-title">Battery Management System PCB Redesign</div>
-        <div class="project-desc">
-          Full redesign of the BMS PCB for the USV platform.
-          I handled the schematic, layout, and validation, and integrated it
-          into the broader power architecture.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">BMS</span>
-          <span class="project-tag">Power Electronics</span>
-          <span class="project-tag">PCB Redesign</span>
-          <span class="project-tag">Altium</span>
-        </div>
-      </div>
-
-      <!-- COMMS -->
-      <div class="project-card fade-in">
-        <div class="project-index">// 02 · PROFESSIONAL</div>
-        <div class="project-title">Communications Management PCB Redesign</div>
-        <div class="project-desc">
-          Redesigned the communications management board for the same vehicle platform.
-          Full schematic and layout, integrated with the multi-board system.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">RF / Comms</span>
-          <span class="project-tag">PCB Layout</span>
-          <span class="project-tag">Altium</span>
-          <span class="project-tag">Systems Integration</span>
-        </div>
-      </div>
-
-      <!-- JETSON CARRIER -->
-      <div class="project-card fade-in">
-        <div class="project-index">// 03 · PROFESSIONAL</div>
-        <div class="project-title">Jetson Orin AGX Carrier Board</div>
-        <div class="project-desc">
-          Schematic capture and PCB routing on a 12-layer carrier board for the
-          Nvidia Jetson Orin AGX, incorporating PCIe Gen3 x4 and USB 3.1 Gen1 interfaces.
-          Part of the next-gen compute architecture for the USV platform.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">12-Layer PCB</span>
-          <span class="project-tag">High-Speed Interfaces</span>
-          <span class="project-tag">PCIe Gen3</span>
-          <span class="project-tag">USB 3.1</span>
-          <span class="project-tag">Altium</span>
-        </div>
-      </div>
-
       <!-- I2C ADDRESS STRAP -->
       <div class="project-card fade-in">
-        <div class="project-index">// 04 · PROFESSIONAL</div>
+        <div class="project-index">// 01 · PROFESSIONAL</div>
         <div class="project-title">I2C Address Conflict Resolution</div>
         <div class="project-desc">
           When the USV power distribution scaled from 16 to 32 rails, two identical boards
-          ended up on the same I2C bus with conflicting addresses. I solved it with a physical
+          ended up on the same I2C bus with conflicting addresses. Solved it with a physical
           rework on existing stock, a motherboard revision adding pull-up/pull-down resistors
           to determine address by slot, and a firmware update to self-assign at boot.
           The boards shipped and are currently in vessels at sea.
@@ -726,6 +676,67 @@
           <span class="project-tag">Hardware Rework</span>
           <span class="project-tag">Firmware</span>
           <span class="project-tag">Problem Solving</span>
+        </div>
+      </div>
+
+      <!-- SOLAR POWER MONITORING -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 02 · PROFESSIONAL</div>
+        <div class="project-title">Solar Power Monitoring & Charge Input PCB</div>
+        <div class="project-desc">
+          Full schematic and layout redesign of the USV power input board.
+          Monitors DC input from three solar panels and interfaces with the
+          battery charger for the vessel power architecture.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Power Electronics</span>
+          <span class="project-tag">Solar Telemetry</span>
+          <span class="project-tag">DC-DC</span>
+          <span class="project-tag">PCB Layout</span>
+          <span class="project-tag">Altium</span>
+        </div>
+      </div>
+
+      <!-- BOW SENSOR AGGREGATION -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 03 · PROFESSIONAL</div>
+        <div class="project-title">Bow Sensor Aggregation & Navigation Lighting PCB</div>
+        <div class="project-desc">
+          Redesigned the USV bow PCBA handling a CAN-bus weather sensor, ambient light
+          sensor, and capacitive water detection inputs. Processed sensor data onboard
+          and relayed status messages to the main vessel controller. Onboard firmware
+          evaluated ambient light levels and switched red, green, and white navigation
+          lights in compliance with Transport Canada marine regulations.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">CAN Bus</span>
+          <span class="project-tag">Sensor Integration</span>
+          <span class="project-tag">Embedded C</span>
+          <span class="project-tag">Navigation Lighting</span>
+          <span class="project-tag">PCB Layout</span>
+        </div>
+      </div>
+
+      <!-- HEDGEHOG MOTOR CONTROLLER -->
+      <div class="project-card fade-in">
+        <div class="project-index">// 04 · PROFESSIONAL</div>
+        <div class="project-title">Multi-Voltage BLDC Motor Controller Validation</div>
+        <div class="project-desc">
+          Hardware review and hands-on validation of client-designed brushless motor
+          controller PCBAs across three concurrent product variants: 800V, 48V, and 12V
+          coolant pump platforms. Resolved gate driver switching issues by calculating
+          optimal resistor values and verifying on live hardware. Debugged NXP S32
+          peripherals via JTAG/SWD during bring-up. Built an automated test jig with
+          DAQ integration and dummy loads; ran unattended long-duration dynamometer
+          tests via CAN-to-Ethernet automation.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">800V / 48V / 12V</span>
+          <span class="project-tag">BLDC</span>
+          <span class="project-tag">Gate Drivers</span>
+          <span class="project-tag">JTAG / SWD</span>
+          <span class="project-tag">Test Automation</span>
+          <span class="project-tag">Hardware Validation</span>
         </div>
       </div>
 
@@ -747,53 +758,22 @@
         </div>
       </div>
 
-      <!-- CAPSTONE -->
+      <!-- JETSON CARRIER -->
       <div class="project-card fade-in">
-        <div class="project-index">// 06 · ACADEMIC</div>
-        <div class="project-title">PC Power Supply Unit — Capstone Project</div>
+        <div class="project-index">// 06 · PROFESSIONAL</div>
+        <div class="project-title">Jetson Orin AGX Carrier Board</div>
         <div class="project-desc">
-          Built a PC power supply from the ground up as my engineering capstone.
-          Schematic, PCB layout, physical build, and testing all done alongside my team.
+          Schematic capture and initiated PCB routing on a 12-layer carrier board for the
+          Nvidia Jetson Orin AGX, incorporating PCIe Gen3 x4 and USB 3.1 Gen1 interfaces.
+          Part of the next-gen compute architecture for the USV platform.
+          Project was discontinued before routing was completed.
         </div>
         <div class="project-tags">
-          <span class="project-tag">Power Electronics</span>
-          <span class="project-tag">Schematic Design</span>
-          <span class="project-tag">PCB Layout</span>
-          <span class="project-tag">Build & Test</span>
-        </div>
-      </div>
-
-      <!-- TV MOUNT -->
-      <div class="project-card fade-in">
-        <div class="project-index">// 07 · PERSONAL</div>
-        <div class="project-title">Motorized TV Mounting System</div>
-        <div class="project-desc">
-          A TV mount that moves the display into position automatically.
-          Custom brackets and parts designed and 3D-printed by me with smart home integration.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">3D Printing</span>
-          <span class="project-tag">CAD</span>
-          <span class="project-tag">Embedded</span>
-          <span class="project-tag">Home Automation</span>
-        </div>
-      </div>
-
-      <!-- HOMELAB -->
-      <div class="project-card fade-in">
-        <div class="project-index">// 08 · PERSONAL</div>
-        <div class="project-title">Homelab Infrastructure</div>
-        <div class="project-desc">
-          Self-built server and network rack running Proxmox virtualization,
-          reverse proxies, NAS storage, and PoE camera infrastructure.
-          Designed for reliability, future expansion, and local-first control.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">Proxmox</span>
-          <span class="project-tag">Network Design</span>
-          <span class="project-tag">NAS</span>
-          <span class="project-tag">PoE</span>
-          <span class="project-tag">Self-Hosted</span>
+          <span class="project-tag">12-Layer PCB</span>
+          <span class="project-tag">High-Speed Interfaces</span>
+          <span class="project-tag">PCIe Gen3</span>
+          <span class="project-tag">USB 3.1</span>
+          <span class="project-tag">Altium</span>
         </div>
       </div>
 
