@@ -581,8 +581,8 @@
     <div class="hero-label">// Electronics Engineer, EIT - Langley, BC</div>
     <h1 class="hero-name">ARBAB<br><span>AHMED</span></h1>
     <p class="hero-tagline">
-      I design <strong>hardware that works in the real world</strong>,
-      from schematic capture and PCB layout through prototype bring-up and production handoff.
+      I design electronics from <strong>schematic capture and PCB layout</strong>
+      through bring-up, validation, and production handoff.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
@@ -611,23 +611,17 @@
   <!-- ─── ABOUT ─────────────────────────────────────────── -->
   <section id="about">
     <div class="section-label">// 01 — About</div>
-    <h2 class="section-title fade-in">Systems Thinker.<br>Hardware Builder.</h2>
+    <h2 class="section-title fade-in">PCB Design.<br>Bring-Up. Production.</h2>
     <div class="about-grid">
       <div class="about-text fade-in">
         <p>
-          I'm an electronics engineer focused on PCB design, hardware validation,
-          and getting products from prototype to production. When I look at a design,
-          I'm thinking about the whole picture: where it might fail, how it gets built,
-          and what happens when the requirements shift.
+          I design PCBAs, bring up prototypes, and work with contract manufacturers
+          through production.
         </p>
         <p>
-          That kind of thinking shows up the same way whether I'm laying out a board,
-          debugging a prototype on the bench, or working through DFM feedback with a CM.
-        </p>
-        <p>
-          My strongest work is at the <strong>integration boundary</strong>: where
-          layout decisions, component selection, power budgets, and real-world
-          operating conditions all have to line up before anything ships.
+          I focus on the details that decide whether a board ships:
+          <strong>component selection, layout, power budgets, interfaces, DFM,
+          and bench failures</strong>.
         </p>
       </div>
       <div class="fade-in">
@@ -679,11 +673,9 @@
           <div class="project-index">// FEATURED · PROFESSIONAL</div>
           <div class="project-title">Unmanned Surface Vehicle:<br>10-PCBA Electronics Platform</div>
           <div class="project-desc">
-            Sole PCB designer on the electronics package for an autonomous unmanned surface
-            vehicle with 10 PCBAs. Full schematic and layout ownership on three boards,
-            with system architecture scoped in collaboration with the lead engineer.
-            The platform integrated navigation, communications, sensor aggregation,
-            and power management for field-deployed marine vessels.
+            Owned schematic capture and PCB layout for boards in a 10-PCBA electronics
+            platform for an autonomous unmanned surface vehicle. Took designs from concept
+            through production handoff. Scoped the system architecture with the lead engineer.
           </div>
           <div class="project-tags">
             <span class="project-tag">Altium Designer</span>
@@ -709,13 +701,11 @@
         <div class="project-index">// 01 · PROFESSIONAL</div>
         <div class="project-title">Multi-Voltage BLDC Motor Controller Validation</div>
         <div class="project-desc">
-          Hardware review and hands-on validation of client-designed brushless motor
-          controller PCBAs across three concurrent product variants: 800V, 48V, and 12V
-          coolant pump platforms. Resolved gate driver switching issues by calculating
-          optimal resistor values and verifying on live hardware. Debugged NXP S32
-          peripherals via JTAG/SWD during bring-up. Built an automated test jig with
-          DAQ integration and dummy loads; ran unattended long-duration dynamometer
-          tests via CAN-to-Ethernet automation.
+          Reviewed and validated client-designed BLDC controller PCBAs for 800 V, 48 V,
+          and 12 V coolant pumps. Corrected gate-driver switching with calculated gate-resistor
+          values and verified the changes on hardware. Debugged NXP S32 peripherals over
+          JTAG/SWD. Built a DAQ-integrated test jig with dummy loads and CAN-to-Ethernet
+          automation for unattended dynamometer runs.
         </div>
         <div class="project-tags">
           <span class="project-tag">800V / 48V / 12V</span>
@@ -732,10 +722,9 @@
         <div class="project-index">// 02 · PROFESSIONAL</div>
         <div class="project-title">Automated Test Jig for USV Electronics</div>
         <div class="project-desc">
-          Designed an automated test jig with purpose-built test circuits and dummy loads
-          to validate the full USV electronics package before deployment. Incorporated
-          external sensor communication to verify system-level electrical performance
-          without needing the complete vessel.
+          Designed and built an automated test jig with purpose-built circuits, dummy loads,
+          and external sensor communication. It validated the full USV electronics package
+          before deployment without requiring the complete vessel.
         </div>
         <div class="project-tags">
           <span class="project-tag">Test Automation</span>
@@ -750,11 +739,10 @@
         <div class="project-index">// 03 · PROFESSIONAL</div>
         <div class="project-title">Bow Sensor Aggregation & Navigation Lighting PCB</div>
         <div class="project-desc">
-          Redesigned the USV bow board handling a CAN-bus weather sensor, ambient light
-          sensor, and capacitive water detection inputs. Processed sensor data onboard
-          and relayed status messages to the main vessel controller. Onboard firmware
-          evaluated ambient light levels and switched red, green, and white navigation
-          lights in compliance with Transport Canada marine regulations.
+          Redesigned the USV bow board to interface with a CAN weather sensor, ambient light
+          sensor, and capacitive water-detection inputs. Firmware relayed sensor data to the
+          main vessel controller and switched red, green, and white navigation lights based
+          on ambient light. The lighting behavior was designed to meet Transport Canada marine regulations.
         </div>
         <div class="project-tags">
           <span class="project-tag">CAN Bus</span>
@@ -770,9 +758,8 @@
         <div class="project-index">// 04 · PROFESSIONAL</div>
         <div class="project-title">Solar Power Monitoring & Charge Input PCB</div>
         <div class="project-desc">
-          Full schematic and layout redesign of the USV power input board.
-          Monitors DC input from three solar panels and interfaces with the
-          battery charger for the vessel power architecture.
+          Redesigned the schematic and PCB layout for the USV power-input board. The board
+          monitored DC input from three solar panels and interfaced with the vessel battery charger.
         </div>
         <div class="project-tags">
           <span class="project-tag">Power Electronics</span>
@@ -789,9 +776,8 @@
         <div class="project-title">I2C Address Conflict Resolution</div>
         <div class="project-desc">
           When the USV power distribution scaled from 16 to 32 rails, two identical boards
-          ended up on the same I2C bus with conflicting addresses. Solved it with a physical
-          rework on existing stock, a motherboard revision adding pull-up/pull-down resistors
-          to determine address by slot, and a firmware update to self-assign at boot.
+          shared an I2C address. Reworked existing stock, revised the
+          motherboard with slot-based address straps, and updated firmware to self-assign at boot.
           The boards shipped and are currently in vessels at sea.
         </div>
         <div class="project-tags">
@@ -805,12 +791,11 @@
       <!-- JETSON CARRIER -->
       <div class="project-card fade-in">
         <div class="project-index">// 06 · PROFESSIONAL</div>
-        <div class="project-title">Jetson Orin AGX Carrier Board</div>
+        <div class="project-title">Jetson AGX Orin Carrier Board</div>
         <div class="project-desc">
-          Schematic capture and initiated PCB routing on a 12-layer carrier board for the
-          Nvidia Jetson Orin AGX, incorporating PCIe Gen3 x4 and USB 3.1 Gen1 interfaces.
-          Part of the next-gen compute architecture for the USV platform.
-          Project was discontinued before routing was completed.
+          Completed schematic capture and began PCB routing on a 12-layer carrier board
+          for the NVIDIA Jetson AGX Orin with PCIe Gen3 x4 and USB 3.1 Gen1 interfaces.
+          The project was discontinued before routing was completed.
         </div>
         <div class="project-tags">
           <span class="project-tag">12-Layer PCB</span>
@@ -838,12 +823,9 @@
         </div>
         <ul class="timeline-bullets">
           <li>Primary PCB reviewer for client-designed 800V BLDC motor controller assemblies, catching ground loops and misconfigured MCU pins before boards went to manufacture</li>
-          <li>Led prototype bring-up and hardware validation on high-voltage motor control PCBAs, resolving issues through board-level modifications to bring prototypes to full spec</li>
-          <li>Identified gate driver switching performance issues by calculating optimal gate resistor values and verifying on live hardware; findings adopted by the client in subsequent revisions</li>
-          <li>Debugged NXP S32M244 motor controller hardware using PEmicro Cyclone JTAG/SWD, including live breakpoint debugging and peripheral register inspection during bring-up</li>
-          <li>Developed test firmware for peripheral validation when production firmware was insufficient for specific test requirements</li>
-          <li>Designed and built an automated test jig with 4-20 mA instrumentation, DAQ integration, and dummy loads to validate motor controller hardware under realistic operating conditions</li>
-          <li>Conducted dynamometer and pump testing with CAN-to-Ethernet gateways and custom automation software, enabling unattended long-duration validation runs</li>
+          <li>Led high-voltage motor-control PCBA bring-up and validation, resolving faults with board-level modifications</li>
+          <li>Debugged NXP S32M244 hardware via PEmicro Cyclone JTAG/SWD and wrote test firmware for peripheral validation where production firmware fell short</li>
+          <li>Built automated test infrastructure: a DAQ-integrated jig with 4-20 mA instrumentation and dummy loads, plus CAN-to-Ethernet dynamometer automation for unattended long-duration validation runs</li>
           <li>Redlined schematics, layouts, and BOMs for component shortages; authored ECOs and test reports to document all design changes</li>
         </ul>
       </div>
@@ -855,12 +837,8 @@
           <div class="timeline-role">Jr. Electronics Engineer · Victoria, BC</div>
         </div>
         <ul class="timeline-bullets">
-          <li>Sole PCB designer on a 10-PCBA autonomous unmanned surface vessel; full schematic and layout ownership on three boards from concept through production handoff</li>
-          <li>Owned layout and stack-up definition (4 to 8 layers) in Altium for mixed-signal MCU-based boards supporting solar telemetry, navigation lighting, and bilge monitoring on deployed USVs</li>
-          <li>Proposed and designed a consolidated 8-layer validation PCBA combining a planned 3-board next-generation architecture, integrating high-current power, mixed-signal circuitry, and communication interfaces with an Nvidia Jetson SBC</li>
-          <li>Performed schematic capture and initiated PCB routing on a 12-layer Jetson Orin AGX carrier board with PCIe Gen3 x4 and USB 3.1 Gen1 interfaces</li>
-          <li>Designed automated test jig with purpose-built test circuits, dummy loads, and external sensor communication to verify system-level electrical performance of the full USV electronics package before deployment</li>
-          <li>Wrote MSP430 firmware to dynamically assign I2C addresses via hardware strap pins at boot, resolving a bus conflict when the power distribution scaled from 16 to 32 rails</li>
+          <li>Owned schematic capture, PCB layout, and 4-to-8-layer stack-ups for mixed-signal boards within a 10-PCBA USV platform, taking designs from concept through production handoff</li>
+          <li>Designed an 8-layer validation PCBA combining a planned 3-board architecture with high-current power, mixed-signal circuitry, communication interfaces, and an NVIDIA Jetson SBC</li>
           <li>Built and maintained the Altium component library and led the migration from KiCAD alongside an outside consulting engineer</li>
           <li>Worked directly with contract manufacturers to review layouts, address DFM feedback, and resolve assembly issues during prototyping</li>
         </ul>
@@ -895,7 +873,7 @@
         </div>
         <ul class="timeline-bullets">
           <li>Capstone: built a PC power supply from scratch, schematic through physical build and testing</li>
-          <li>Graduated as Engineer in Training (EIT)</li>
+          <li>Registered as an Engineer in Training (EIT)</li>
         </ul>
       </div>
     </div>
@@ -904,10 +882,9 @@
   <!-- ─── CONTACT ──────────────────────────────────────── -->
   <section id="contact">
     <div class="section-label">// 05 — Contact</div>
-    <h2 class="section-title fade-in">Let's Build<br>Something.</h2>
+    <h2 class="section-title fade-in">Let's Talk<br>Hardware.</h2>
     <p class="contact-sub fade-in">
       Open to PCB design, hardware validation, and electrical product development roles.
-      I'm looking for teams where technical rigor matters.
     </p>
     <div class="contact-links fade-in">
       <a href="mailto:Arbab@Ahmed.ee" class="btn-primary">Email Me →</a>
