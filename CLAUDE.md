@@ -18,6 +18,10 @@ Personal site for Arbab Ahmed (Electronics Engineer, EIT). Single static `index.
 - No GitHub links anywhere — he doesn't do work in GitHub.
 - The `ahmed-ee-handoff.md` doc (if provided in a conversation) is a jumping-off point, not the final word. Arbab's direct feedback overrides it.
 
+## Brand assets
+
+`Minimal_A.png` (repo root) is the source brand mark: flat copper "A" with PCB traces on black. `favicon.png` (64px), `apple-touch-icon.png` (180px), and `og-image.png` (1200x630) are all derived from it by cropping/downscaling. Regenerate from the source if it ever changes. `Stylized_A.png` is an alternate glossy version of the same mark, currently unused.
+
 ## Backlog
 
 ### Deferred: "sole PCB designer" rewording (discuss with Arbab before doing)
@@ -29,9 +33,6 @@ Add a resume-download CTA to the hero (e.g. a third button or replace "Get in To
 2. Add `<a href="/Arbab-Ahmed-Resume.pdf" download class="btn-secondary">Resume ↓</a>` (or `btn-primary` — his call) to the `.hero-ctas` div.
 3. Optionally repeat it in the contact section.
 Filename should be human-friendly since it lands in a recruiter's Downloads folder.
-
-### OG image asset needed
-`og:image` and `twitter:card summary_large_image` are omitted from the head until a 1200x630 PNG exists. Simplest asset: a clean screenshot of the hero section at 1200x630, saved as `og-image.png` at repo root, then add the `og:image` / `twitter:image` tags.
 
 ### Future polish (P3 — not scheduled)
 - Mobile nav: `.nav-links` is `display: none` under 800px with no replacement. Add a minimal collapsed nav.
