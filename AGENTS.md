@@ -12,9 +12,14 @@ Personal site for Arbab Ahmed (Electronics Engineer, EIT). Single static `index.
 
 - Arbab makes final edits himself. Deliver drafts and options; never silently overwrite his copy.
 - No fabrication or inflation. Every claim must trace to verified facts. When in doubt, leave it out and flag it.
-- Do NOT describe him as "sole PCB designer" at Open Ocean Robotics in new copy. Correct framing: owned layouts and hands-on schematic/PCB work. (Existing instances on the site are a known, deliberately deferred fix — see backlog.)
+- Do NOT describe him as "sole PCB designer" at Open Ocean Robotics. Correct framing: owned schematic capture, PCB layout, and stack-up definition for boards within the 10-PCBA USV platform. Do not quantify his subset of boards unless Arbab asks; the 10-PCBA figure describes platform scale.
 - Do not mention his current contract role (RST Instruments) without asking him first.
 - Voice: short direct sentences, engineer-to-engineer, every claim carries a specific (voltage, layer count, protocol). Banned: em dashes in prose, "architected," "passionate," "leveraged," "spearheaded," and similar filler.
+- Prefer concrete verbs over qualifiers such as "hands-on," "real-world," "whole-picture," or "technical rigor." State what he designed, debugged, validated, or shipped.
+- Keep project cards and experience bullets complementary. Projects carry the technical problem, work, and result. Experience summarizes role scope and should stay to roughly four or five bullets per employer.
+- Keep EIT separate from the degree. Use "Registered as an Engineer in Training (EIT)," not "Graduated as Engineer in Training."
+- Regulatory language must describe design intent unless formal compliance is verified. Current approved framing: "designed to meet Transport Canada marine regulations."
+- The hero's "4+ Years Experience" is a deliberate forward-looking choice for the site's intended review window. Do not revise it from the visible employment dates without asking Arbab.
 - No GitHub links anywhere — he doesn't do work in GitHub.
 - The `ahmed-ee-handoff.md` doc (if provided in a conversation) is a jumping-off point, not the final word. Arbab's direct feedback overrides it.
 
@@ -23,9 +28,6 @@ Personal site for Arbab Ahmed (Electronics Engineer, EIT). Single static `index.
 `Minimal_A.png` (repo root) is the source brand mark: flat copper "A" with PCB traces on black. `favicon.png` (64px), `apple-touch-icon.png` (180px), and `og-image.png` (1200x630) are all derived from it by cropping/downscaling. Regenerate from the source if it ever changes. `Stylized_A.png` is an alternate glossy version of the same mark, currently unused.
 
 ## Backlog
-
-### Deferred: "sole PCB designer" rewording (discuss with Arbab before doing)
-Appears in the featured project card and the Open Ocean Robotics experience bullet in `index.html`. Needs rewording. Arbab wants to handle this after the other fixes land — raise it, don't just do it.
 
 ### Resume download button (good task for a small/cheap model)
 Add a resume-download CTA to the hero (e.g. a third button or replace "Get in Touch"). Steps:
