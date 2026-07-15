@@ -34,6 +34,9 @@ Add a resume-download CTA to the hero (e.g. a third button or replace "Get in To
 3. Optionally repeat it in the contact section.
 Filename should be human-friendly since it lands in a recruiter's Downloads folder.
 
+### OG image v2 (waiting on Arbab's reworked artwork)
+Meta-tag inspectors flag `og-image.png` as missing "conversion text." Fix when Arbab reworks the mark: recompose the 1200x630 card with his name and title (e.g. "ARBAB AHMED / PCB Design") next to the A. The compose step is a PowerShell System.Drawing crop/scale onto a 1200x630 black canvas.
+
 ### Future polish (P3 — not scheduled)
 - Mobile nav: `.nav-links` is `display: none` under 800px with no replacement. Add a minimal collapsed nav.
 - Respect `prefers-reduced-motion`: disable the fadeUp/fade-in animations for users who opt out.
